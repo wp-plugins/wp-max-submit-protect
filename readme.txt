@@ -3,8 +3,8 @@ Contributors: judgej
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B4STZL8F5WHK6
 Tags: woocommerce, forms, data-integrity
 Requires at least: 3.6
-Tested up to: 4.2.2
-Stable tag: 1.1.1
+Tested up to: 4.2.3
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,8 @@ This plugin has been tested against PHP5.4 but is written to be compatible with 
 
 [https://github.com/academe/wp-max-submit-protect](https://github.com/academe/wp-max-submit-protect)
 
+Note: turning on the Gravity Forms' ""No-Conflict Mode" will disable this plugin. You may have reasons for using that setting, but it will disable most other plugins, some of which may be security-related.
+
 Please let me know how this plugin works for you, whether you like it, and how it can be improved.
 
 == Installation ==
@@ -64,7 +66,6 @@ and the purpose of this plugin is to warn you about those.
 The PHP ini settings that could affect the data in large forms are:
 
 * max_input_vars
-* suhosin.get.max_vars
 * suhosin.post.max_vars
 * suhosin.request.max_vars
 
@@ -76,6 +77,9 @@ will default to 1000. This is certainly too low for some e-commerce plugins.
 1. An example of the message that appears if you try to submit more POST parameters than the server is able to accept.
 
 == Changelog ==
+
+= Version 1.1.2 =
+* Issue #10: Disable the inline JS in the header if the enqueued JS library link has not completed. This can happen if another plugin (e.g. Gravity Forms) disables the JS for all other plugins to avoid having to play nicely with them. This worries me.
 
 = Version 1.1.1 =
 * Remove check of suhosin.get.max_vars as we are only interested in POST forms.
